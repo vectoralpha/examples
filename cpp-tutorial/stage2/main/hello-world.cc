@@ -1,4 +1,5 @@
 #include "hello-greet.h"
+#include "Test.hh"
 #include <ctime>
 #include <iostream>
 #include <string>
@@ -13,7 +14,7 @@ int main(int argc, char** argv) {
   if (argc > 1) {
     who = argv[1];
   }
-  std::cout << get_greet(who) << std::endl;
+  wrap_print_output(get_greet(who));
   print_localtime();
   return 0;
 }

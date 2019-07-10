@@ -32,3 +32,12 @@ bazel build //main:hello-world
 
 bazel build ///main:hello-world
 ```
+
+To run coverage, execute ```bazel coverage //...```.  You will note that the generated file at ```bazel-testlogs/main/hello-world/coverage.dat``` does not contain any entries for the *.inl files in the project.  In order to generate a coverage report that does contain the required files, you need to run the following steps.
+```
+bazel-bin/main/./hello-world
+lcov --no-external --capture --directory bazel-bin/main/_objs/ --base-directory . --output-file complete_log.dat
+```
+
+The generated ```complete_log.dat``` contains the *.inl file entries.
+
